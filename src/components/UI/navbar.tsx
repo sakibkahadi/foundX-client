@@ -17,37 +17,24 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/src/config/site";
 import { ThemeSwitch } from "@/src/components/UI/theme-switch";
-import { SearchIcon, Logo } from "@/src/components/icons";
+import { Logo } from "@/src/components/icons";
+import { Avatar } from "@nextui-org/avatar";
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/dropdown";
+import NavbarDropdown from "./NavbarDropdown";
 
 export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
-
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">Found-x</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -74,6 +61,9 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
+        </NavbarItem>
+        <NavbarItem className=" hidden sm:flex gap-2">
+          <NavbarDropdown />
         </NavbarItem>
       </NavbarContent>
 
